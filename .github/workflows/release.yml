@@ -1,0 +1,63 @@
+name: Release
+
+# Cut a release automatically: push a tag like `v1.0.0`
+#   git tag v1.0.0 && git push origin v1.0.0
+# CI then builds the APKs and publishes a GitHub Release with them attached.
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag / version to publish (must already exist as a git tag)'
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build & publish release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Make gradlew executable
+        run: chmod +x gradlew
+
+      - name: Build APKs (debug + release)
+        run: ./gradlew assembleDebug assembleRelease --no-daemon --stacktrace
+
+      - name: Prepare release assets
+        run: |
+          mkdir -p release
+          cp app/build/outputs/apk/debug/app-debug.apk release/mini-time-widget.apk
+          # release APK is unsigned; keep it for reference
+          cp app/build/outputs/apk/release/app-release-unsigned.apk release/mini-time-widget-release-unsigned.apk 2>/dev/null || true
+          ls -lh release
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          draft: false
+          prerelease: false
+          files: |
+            release/mini-time-widget.apk
+            release/mini-time-widget-release-unsigned.apk

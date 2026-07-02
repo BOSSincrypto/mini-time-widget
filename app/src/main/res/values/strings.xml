@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mini Time Widget</string>
+    <string name="widget_label">Mini Time 1x2</string>
+    <string name="widget_description">Two time zones in one minimal 1x2 widget</string>
+    <string name="zone_first">First time zone</string>
+    <string name="zone_second">Second time zone</string>
+    <string name="text_color">Text color</string>
+    <string name="bg_color">Background color</string>
+    <string name="bg_opacity">Background opacity</string>
+    <string name="font">Font</string>
+    <string name="use_24h">24-hour format</string>
+    <string name="save">Save</string>
+    <string name="label1_default">Moscow</string>
+    <string name="label2_default">New York</string>
+</resources>

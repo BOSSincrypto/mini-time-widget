@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <FrameLayout
+            android:id="@+id/preview_container"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            style="@style/ConfigCaption"
+            android:text="@string/zone_first" />
+
+        <Spinner
+            android:id="@+id/spinner_zone1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            style="@style/ConfigCaption"
+            android:text="@string/zone_second" />
+
+        <Spinner
+            android:id="@+id/spinner_zone2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            style="@style/ConfigCaption"
+            android:text="@string/font" />
+
+        <Spinner
+            android:id="@+id/spinner_font"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            style="@style/ConfigCaption"
+            android:text="@string/text_color" />
+
+        <LinearLayout
+            android:id="@+id/row_text_color"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal" />
+
+        <TextView
+            style="@style/ConfigCaption"
+            android:text="@string/bg_color" />
+
+        <LinearLayout
+            android:id="@+id/row_bg_color"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal" />
+
+        <TextView
+            style="@style/ConfigCaption"
+            android:text="@string/bg_opacity" />
+
+        <SeekBar
+            android:id="@+id/seek_alpha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="255" />
+
+        <CheckBox
+            android:id="@+id/check_24h"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/use_24h" />
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/save" />
+    </LinearLayout>
+</ScrollView>
